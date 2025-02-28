@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slime Breeder</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #222;
+        }
+        #gameCanvas {
+            display: block;
+            margin: 0 auto;
+            background-color: #333;
+            width: 800px;
+            height: 600px;
+        }
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-family: Arial, sans-serif;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="ui">
+        <div id="playerInfo">Player: Guest</div>
+        <div id="slimeCount">Slimes: 0</div>
+    </div>
+    <script src="slime.js"></script>
+    <script src="player.js"></script>
+    <script src="renderer.js"></script>
+    <script src="networking.js"></script>
+    <script src="game.js"></script>
+    <script>
+        console.log('DOM loaded, initializing game...');
+        // Add initialization code here
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+            const canvas = document.getElementById('gameCanvas');
+            console.log('Canvas element:', canvas);
+            if (canvas) {
+                const game = new GameManager(canvas);
+                console.log('Game manager created');
+                game.init();
+                console.log('Game initialized');
+            } else {
+                console.error('Canvas element not found!');
+            }
+        });
+    </script>
+</body>
+</html>
